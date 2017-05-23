@@ -1,0 +1,28 @@
+8. 
+//werden so alle Datensätze ausgewählt, die nicht in projekt_aktion enthalten sind?
+
+select aktion.*
+from aktion, projekt_aktion
+where aktion.aid <> projekt_aktion.aid;
+
+9.
+select aktion.titel, kategorie.name
+from aktion, kategorie
+where aktion.kid = kategorie.kid;
+
+10.
+update aktion
+SET prioritaet = prioritaet + 1
+where erledigt = false;
+
+11.
+select projekt_aktion.pid, aktion.titel
+from projekt_aktion, aktion
+where projekt_aktion.aid = aktion.aid AND aktion.erledigt = false;
+
+12.
+update projekt p
+join projekt_aktion pa ON p.pid = pa.pid
+join aktion a 		   ON pa.aid = a.aid
+where a.erledigt = true;
+set p.abgeschlossen = true;
