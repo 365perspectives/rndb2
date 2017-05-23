@@ -1,0 +1,22 @@
+1.
+select Strasse, Hausnummer, Postleitzahl, Stadt
+from Adressen, Kunden
+where Adressen.Adress_ID = Kunden.Adress_ID AND Kunden.Kundennummer = 1;
+
+2.
+select DISTINCT Stadt
+from Adressen;
+
+3.
+select SUM(Anzahl)
+from Temp_Positionen
+where Kundennummer = 2;
+
+4.
+select Kundennummer, Sum(Anzahl)
+from Temp_Positionen;
+
+5.
+select SUM(Zwischensumme)
+from Temp_Positionen
+where Kundennummer = 2;
