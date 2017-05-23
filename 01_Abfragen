@@ -1,0 +1,27 @@
+8. 
+select aktion.*
+from aktion LEFT JOIN projekt_aktion
+ON aktion.aid = projekt_aktion.aid
+where projekt_aktion.aid is NULL;
+
+9.
+select aktion.titel, kategorie.name
+from aktion, kategorie
+where aktion.kid = kategorie.kid;
+
+10.
+update aktion
+SET prioritaet = prioritaet + 1
+where erledigt = false;
+
+11.
+select projekt_aktion.pid, aktion.titel
+from projekt_aktion, aktion
+where projekt_aktion.aid = aktion.aid AND aktion.erledigt = false;
+
+12.
+update projekt p
+join projekt_aktion pa ON p.pid = pa.pid
+join aktion a 		   ON pa.aid = a.aid
+set p.abgeschlossen = 1
+where a.erledigt = 1;
