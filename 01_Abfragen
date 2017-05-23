@@ -1,9 +1,8 @@
 8. 
-//werden so alle Datensätze ausgewählt, die nicht in projekt_aktion enthalten sind?
-
 select aktion.*
-from aktion, projekt_aktion
-where aktion.aid <> projekt_aktion.aid;
+from aktion LEFT JOIN projekt_aktion
+ON aktion.aid = projekt_aktion.aid
+where projekt_aktion.aid is NULL;
 
 9.
 select aktion.titel, kategorie.name
@@ -24,5 +23,5 @@ where projekt_aktion.aid = aktion.aid AND aktion.erledigt = false;
 update projekt p
 join projekt_aktion pa ON p.pid = pa.pid
 join aktion a 		   ON pa.aid = a.aid
-where a.erledigt = true;
-set p.abgeschlossen = true;
+set p.abgeschlossen = 1
+where a.erledigt = 1;
